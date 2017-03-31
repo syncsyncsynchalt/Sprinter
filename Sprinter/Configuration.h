@@ -17,6 +17,7 @@
 // Gen 3 Plus = 21
 // gen 3  Monolithic Electronics = 22
 // Gen3 PLUS for TechZone Gen3 Remix Motherboard = 23
+//my= mainboard type,ramps 1.4 +2560 is 33.
 #define MOTHERBOARD 33
 
 //// Thermistor settings:
@@ -27,14 +28,16 @@
 // 5 is ParCan supplied 104GT-2 100K
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
+//my=type of heater's thermistor
 #define THERMISTORHEATER 1
+//my=type of bed's thermistor
 #define THERMISTORBED 1
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {80, 80, 3200/1.25,700}
+#define _AXIS_STEP_PER_UNIT {80, 80,1600,700}
 // Metric Prusa Mendel with Makergear geared stepper extruder:
-//#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
+//#define _AXIS_STEP_PER_UNIT {80,80,1600,1380}
 // MakerGear Hybrid Prusa Mendel:
 // Z axis value is for .9 stepper(if you have 1.8 steppers for Z, you need to use 2272.7272)
 //#define _AXIS_STEP_PER_UNIT {104.987, 104.987, 4545.4544, 1487}
@@ -111,7 +114,7 @@ const bool Z_ENDSTOP_INVERT = false;
 //-----------------------------------------------------------------------
 const bool DISABLE_X = false;
 const bool DISABLE_Y = false;
-const bool DISABLE_Z = true;
+const bool DISABLE_Z = false;
 const bool DISABLE_E = false;
 
 //-----------------------------------------------------------------------
@@ -141,14 +144,14 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //-----------------------------------------------------------------------
 const int X_MAX_LENGTH = 200;
 const int Y_MAX_LENGTH = 200;
-const int Z_MAX_LENGTH = 100;
+const int Z_MAX_LENGTH = 250;
 
 //-----------------------------------------------------------------------
 //// MOVEMENT SETTINGS
 //-----------------------------------------------------------------------
 const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z, E
-#define _MAX_FEEDRATE {400, 400, 2, 45}       // (mm/sec)    
-#define _HOMING_FEEDRATE {1500,1500,120}      // (mm/min) !!
+#define _MAX_FEEDRATE {400, 400, 150, 45}       // (mm/sec)    
+#define _HOMING_FEEDRATE {1500,1500,150}      // (mm/min) !!
 #define _AXIS_RELATIVE_MODES {false, false, false, false}
 
 #define MAX_STEP_FREQUENCY 30000 // Max step frequency
@@ -156,7 +159,7 @@ const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z,
 //For the retract (negative Extruder) move this maxiumum Limit of Feedrate is used
 //The next positive Extruder move use also this Limit, 
 //then for the next (second after retract) move the original Maximum (_MAX_FEEDRATE) Limit is used
-#define MAX_RETRACT_FEEDRATE 100    //mm/sec
+#define MAX_RETRACT_FEEDRATE 50    //mm/sec
 
 //-----------------------------------------------------------------------
 //// Not used at the Moment
